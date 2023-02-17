@@ -7,6 +7,7 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,7 +24,7 @@ import java.io.IOException;
 public class LoginScene {
     private Scene scene;
     private Parent root;
-    private Stage stage;
+    private static Stage stage;
 
     public LoginScene(Stage stage) throws IOException {
         this.stage = stage;
@@ -40,7 +41,29 @@ public class LoginScene {
 
         stage.setScene(this.scene);
 
+        stage.iconifiedProperty().addListener((observable, oldValue, newValue) -> {
+            if(!newValue){
+                restoreStage(stage);
+            }
+        });
+
         stage.show();
     }
 
+    private void restoreStage(Stage stage) {
+        DoubleProperty height = new SimpleDoubleProperty();
+        height.bind(stage.heightProperty());
+
+        Duration duration = Duration.millis(300);
+        Timeline timeline = new Timeline(
+                new KeyFrame(duration, new KeyValue(height, 200)),
+                new KeyFrame(duration, new KeyValue(stage.opacityProperty(), 1))
+        );
+        height.unbind();
+
+        timeline.setOnFinished(event1 -> stage.setIconified(false));
+
+        // Play the timeline
+        timeline.play();
+    }
 }

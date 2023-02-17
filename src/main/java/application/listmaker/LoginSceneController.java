@@ -1,11 +1,13 @@
 package application.listmaker;
 
+import javafx.animation.AnimationTimer;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -15,14 +17,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.EventListener;
 import java.util.ResourceBundle;
 
 public class LoginSceneController implements Initializable {
@@ -35,6 +41,12 @@ public class LoginSceneController implements Initializable {
 
     @FXML
     private Button closeButton;
+
+    @FXML
+    private HBox topBar;
+
+    private double x;
+    private double y;
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
@@ -52,10 +64,21 @@ public class LoginSceneController implements Initializable {
             closeButtonImageView.setFitWidth(25);
             closeButtonImageView.setFitHeight(25);
             this.closeButton.setGraphic(closeButtonImageView);
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
+    }
 
+    public void topBarOnMousePressed(MouseEvent event){ // Get the position where you click on the topBar
+        x = event.getSceneX();
+        y = event.getSceneY();
+    }
+
+    public void topBarOnMouseDragged(MouseEvent event){ // Move the stage with your mouse
+        this.stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        stage.setX(event.getScreenX() - x);
+        stage.setY(event.getScreenY() - y);
     }
 
     public void minimizeStage(ActionEvent event){

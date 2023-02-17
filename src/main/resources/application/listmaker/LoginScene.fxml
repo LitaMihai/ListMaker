@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -60,35 +59,35 @@
                   <Insets left="45.0" right="45.0" top="40.0" />
                </padding>
             </VBox>
+            <HBox onMouseDragged="#topBarOnMouseDragged" onMousePressed="#topBarOnMousePressed" prefHeight="26.0" prefWidth="377.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
          </children>
       </AnchorPane>
       <AnchorPane nodeOrientation="RIGHT_TO_LEFT" prefHeight="200.0" prefWidth="200.0">
          <children>
-            <VBox alignment="CENTER" layoutX="37.0" prefHeight="530.0" prefWidth="567.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <VBox alignment="CENTER" prefHeight="530.0" prefWidth="567.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                <children>
                   <Label fx:id="logoText1" text="ListMaker">
                      <font>
                         <Font size="100.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                   <Label fx:id="logoText2" text="More than just a list">
                      <font>
                         <Font size="30.0" />
-                     </font></Label>
+                     </font>
+                  </Label>
                </children>
             </VBox>
-            <StackPane alignment="TOP_RIGHT" prefHeight="150.0" prefWidth="200.0">
+            <HBox fx:id="topBar" onMouseDragged="#topBarOnMouseDragged" onMousePressed="#topBarOnMousePressed" prefHeight="26.0" prefWidth="567.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
-                     <children>
-                        <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeStage">
-                           <HBox.margin>
-                              <Insets right="20.0" />
-                           </HBox.margin></Button>
-                        <Button fx:id="minimizeButton" mnemonicParsing="false" onAction="#minimizeStage" />
-                     </children>
-                  </HBox>
+                  <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeStage">
+                     <HBox.margin>
+                        <Insets right="20.0" />
+                     </HBox.margin>
+                  </Button>
+                  <Button fx:id="minimizeButton" mnemonicParsing="false" onAction="#minimizeStage" />
                </children>
-            </StackPane>
+            </HBox>
          </children>
       </AnchorPane>
    </items>
