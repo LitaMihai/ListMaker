@@ -2,3 +2,35 @@
     -fx-padding: 0;
     -fx-background-color: transparent;
 }
+
+.root {
+    -fx-background-color: #16161C;
+}
+
+.label {
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Inter Semi Bold";
+}
+
+.text-field {
+    -fx-background-color: #1E1E26;
+    -fx-text-fill: #FFFFFF;
+    -fx-font-family: "Inter Semi Bold";
+    -fx-font-size: 14;
+}
+
+#logoText1, #logoText2 {
+    -fx-font-family: "Impact";
+    -fx-text-fill: linear-gradient(to left, #F29682, #EE69AC, #CB4BCF);
+}
+
+#signUpButton, #backButton {
+    -fx-background-color: linear-gradient(to left, #F29682, #EE69AC, #CB4BCF);
+    -fx-text-fill: #16161C;
+    -fx-font-weight: bold;
+}
+
+#minimizeButton, #closeButton {
+    -fx-background-color: transparent;
+}
+

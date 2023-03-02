@@ -24,7 +24,7 @@
     -fx-text-fill: linear-gradient(to left, #F29682, #EE69AC, #CB4BCF);
 }
 
-#button1, #button2 {
+#signUpButton, #signInButton {
     -fx-background-color: linear-gradient(to left, #F29682, #EE69AC, #CB4BCF);
     -fx-text-fill: #16161C;
     -fx-font-weight: bold;
@@ -33,4 +33,3 @@
 #minimizeButton, #closeButton {
     -fx-background-color: transparent;
 }
-
